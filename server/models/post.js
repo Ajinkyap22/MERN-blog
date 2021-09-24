@@ -5,7 +5,7 @@ const PostSchema = new Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
   author: { type: Schema.Types.ObjectId, required: true },
-  comments: { type: Array },
+  comments: { type: Array, default: [] },
   published: { type: Boolean },
   timestamp: { type: Date },
 });

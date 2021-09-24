@@ -1,18 +1,26 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 const postController = require("../controllers/postController");
 
 // GET all posts
-
-// GET create post
+router.get("/", postController.posts);
 
 // POST create post
+router.post("/create", [
+  passport.authenticate("jwt", { session: false }),
+  postController.create_post,
+]);
 
-// GET update post
+// POST publish post
+router.post("/:post_id/publish", [
+  passport.authenticate("jwt", { session: false }),
+  postController.publish,
+]);
+
+// POST unpublish post
 
 // PUT update post
-
-// GET delete post
 
 // DELETE delete post
 
