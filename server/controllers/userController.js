@@ -29,7 +29,7 @@ exports.login_post = function (req, res) {
     jwt.sign(
       { _id: user._id, username: user.username },
       process.env.SECRET,
-      { expiresIn: "30s" },
+      { expiresIn: "5m" },
       (err, token) => {
         if (err) return res.status(400).json(err);
         res.json({
@@ -95,7 +95,7 @@ exports.signup_post = [
           jwt.sign(
             { _id: user._id, username: user.username },
             process.env.SECRET,
-            { expiresIn: "30s" },
+            { expiresIn: "5m" },
             (err, token) => {
               if (err) return next(err);
 
