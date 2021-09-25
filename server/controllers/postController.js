@@ -132,11 +132,44 @@ exports.post_update = [
       timestamp: Date.now(),
       _id: req.params.id,
     });
-    // update post
-    Post.findByIdAndUpdate(req.params.id, post, {}, function (err, newpost) {
-      if (err) return res.json(err);
 
-      return res.json(newPost);
-    });
+    // update post
+    Post.findByIdAndUpdate(
+      req.params.id,
+      post,
+      { new: true },
+      function (err, newpost) {
+        if (err) return res.json(err);
+
+        return res.json(newpost);
+      }
+    );
   },
 ];
+
+// delete post
+exports.delete_post = function (req, res) {
+  (req, res, next) => {
+    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
+      if (err) return res.status(400).json(err);
+      req.authData = authData;
+      next();
+    });
+  },
+    Post.findByIdAndRemove(req.params.id, function (err) {
+      if (err) return res.json(err);
+
+      res.json({
+        message: "Post deleted successfully",
+      });
+    });
+};
+
+// get single post
+exports.post_get = function (req, res) {
+  Post.findById(req.params.id, function (err, post) {
+    if (err) return res.json(err);
+
+    return res.json(post);
+  });
+};

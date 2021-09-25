@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const postController = require("../controllers/postController");
+const verifyToken = require("../config/verifyToken");
 
 // GET all posts
 router.get("/", postController.posts);
@@ -18,27 +19,9 @@ router.post("/:post_id/unpublish", verifyToken, postController.unpublish);
 router.put("/:id/update", verifyToken, postController.post_update);
 
 // DELETE delete post
+router.delete("/:id/delete", verifyToken, postController.delete_post);
 
 // GET single post
-
-// Verify Token
-function verifyToken(req, res, next) {
-  // Get auth header value
-  const bearerHeader = req.headers["authorization"];
-  // Check if bearer is undefined
-  if (typeof bearerHeader !== "undefined") {
-    // Split at the space
-    const bearer = bearerHeader.split(" ");
-    // Get token from array
-    const bearerToken = bearer[1];
-    // Set the token
-    req.token = bearerToken;
-    // Next middleware
-    next();
-  } else {
-    // Forbidden
-    res.sendStatus(403);
-  }
-}
+router.get("/:id", postController.post_get);
 
 module.exports = router;
