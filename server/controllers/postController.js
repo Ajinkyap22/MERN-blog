@@ -68,7 +68,7 @@ exports.publish = function (req, res) {
     });
   },
     Post.findOneAndUpdate(
-      { _id: req.params.post_id },
+      { _id: req.params.id },
       { published: true },
       { useFindAndModify: false, new: true }
     )
@@ -89,7 +89,7 @@ exports.unpublish = function (req, res) {
     });
   },
     Post.findOneAndUpdate(
-      { _id: req.params.post_id },
+      { _id: req.params.id },
       { published: false },
       { useFindAndModify: false, new: true }
     )

@@ -10,10 +10,10 @@ router.get("/", postController.posts);
 router.post("/create", verifyToken, postController.create_post);
 
 // POST publish post
-router.post("/:post_id/publish", verifyToken, postController.publish);
+router.post("/:id/publish", verifyToken, postController.publish);
 
 // POST unpublish post
-router.post("/:post_id/unpublish", verifyToken, postController.unpublish);
+router.post("/:id/unpublish", verifyToken, postController.unpublish);
 
 // PUT update post
 router.put("/:id/update", verifyToken, postController.post_update);
