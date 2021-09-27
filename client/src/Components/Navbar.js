@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <NavLink exact to="/" className="navbar-brand">
+      <div className="container-fluid py-2">
+        <NavLink exact to="/" className="navbar-brand px-3">
           Blog
         </NavLink>
 
@@ -20,31 +20,44 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div
+          className="collapse navbar-collapse justify-content-end px-3"
+          id="navbarNavAltMarkup"
+        >
           <div className="navbar-nav">
-            <NavLink
+            {/* <NavLink
               exact
               to="/"
               activeClassName="active"
-              className="nav-link active"
+              className="nav-link mx-2"
               aria-current="page"
             >
               Home
-            </NavLink>
-            <NavLink exact to="/" activeClassName="active" className="nav-link">
+            </NavLink> */}
+            <NavLink
+              exact
+              to="/login"
+              activeClassName="active"
+              className="btn btn-primary fw-bold rounded-pill mx-2"
+            >
               Login
-            </NavLink>
-            <NavLink exact to="/" activeClassName="active" className="nav-link">
-              Signup
             </NavLink>
             <NavLink
               exact
               to="/"
               activeClassName="active"
-              className="nav-link disabled"
+              className="btn btn-primary fw-bold rounded-pill mx-2"
+            >
+              Signup
+            </NavLink>
+            {/* <NavLink
+              exact
+              to="/"
+              activeClassName="active"
+              className="nav-link mx-2"
             >
               Disabled
-            </NavLink>
+            </NavLink> */}
           </div>
         </div>
       </div>
