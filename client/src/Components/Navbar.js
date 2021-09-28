@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
+  const logout = (e) => {
+    localStorage.removeItem("user");
+    props.setUser(undefined);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid py-2">
@@ -25,37 +30,55 @@ function Navbar() {
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav">
-            {/* <NavLink
+            <NavLink
               exact
               to="/"
               activeClassName="active"
               className="nav-link mx-2"
               aria-current="page"
+              hidden={props.user ? false : true}
             >
               Home
-            </NavLink> */}
+            </NavLink>
+
             <NavLink
               exact
               to="/login"
               className="btn btn-primary fw-bold rounded-pill mx-2"
+              hidden={props.user ? true : false}
             >
               Login
             </NavLink>
+
             <NavLink
               exact
-              to="/"
+              to="/signup"
               className="btn btn-primary fw-bold rounded-pill mx-2"
+              hidden={props.user ? true : false}
             >
               Signup
             </NavLink>
-            {/* <NavLink
+
+            <NavLink
               exact
-              to="/"
+              to="/create"
               activeClassName="active"
-              className="nav-link mx-2"
+              className="btn btn-primary fw-bold rounded-pill mx-2"
+              hidden={props.user ? false : true}
             >
-              Disabled
-            </NavLink> */}
+              Create Post
+            </NavLink>
+
+            <NavLink
+              exact
+              to="/logout"
+              activeClassName="active"
+              className="btn btn-primary fw-bold rounded-pill mx-2"
+              hidden={props.user ? false : true}
+              onClick={logout}
+            >
+              Logout
+            </NavLink>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
+import Signup from "./Components/Signup";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ function App() {
             path="/login"
             render={() => <Login setUser={setUser} />}
           />
-          {/* <Route exact path="/signup" component={Signup}/> */}
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     </div>

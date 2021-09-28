@@ -13,7 +13,7 @@ function Login(props) {
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
         props.setUser(res.data.user);
-        console.log("login successful", res.data.user);
+        props.history.push("/");
       })
       .catch((err) => {
         console.error(err);
@@ -23,7 +23,15 @@ function Login(props) {
   return (
     <div className="container-fluid d-flex justify-content-center align-items-center h-100">
       <div className="bg-light w-50 shadow-sm p-3 ">
-        <h1>Login</h1>
+        <div className="text-center">
+          <h1>Login</h1>
+          <p>
+            Not a member?{" "}
+            <a href="/signup" className="link-primary text-decoration-none">
+              Sign up
+            </a>
+          </p>
+        </div>
 
         <form onSubmit={submitHander}>
           {/* username */}
