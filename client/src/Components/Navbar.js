@@ -37,7 +37,6 @@ function Navbar() {
             <NavLink
               exact
               to="/login"
-              activeClassName="active"
               className="btn btn-primary fw-bold rounded-pill mx-2"
             >
               Login
@@ -45,7 +44,6 @@ function Navbar() {
             <NavLink
               exact
               to="/"
-              activeClassName="active"
               className="btn btn-primary fw-bold rounded-pill mx-2"
             >
               Signup
