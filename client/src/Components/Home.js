@@ -1,15 +1,15 @@
 import Preview from "./Preview";
-import axios from "axios";
-import { useState } from "react";
 
-function Home() {
-  const [posts, setPosts] = useState([]);
-  const getPosts = () => {
-    axios.get("https://localhost:3000/api/posts").then((res) => {
-      console.log(res.data);
-      setPosts(res.data);
-    });
-  };
+function Home(props) {
+  return (
+    <div className="row">
+      {props.posts.map((post) => (
+        <div className="col">
+          <Preview {...post} />
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Home;

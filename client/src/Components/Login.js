@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { withRouter } from "react-router";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -80,4 +81,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default withRouter(Login);
