@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 exports.posts = function (req, res) {
   Post.find()
     .sort([["timestamp", "descending"]])
+    .populate("author")
     .exec((err, posts) => {
       if (err) return res.json(err);
 
@@ -50,6 +51,8 @@ exports.create_post = [
 
         post.populate("author", (err, newPost) => {
           if (err) return res.json(err);
+
+          console.log(newPost);
 
           return res.json(newPost);
         });
@@ -167,8 +170,10 @@ exports.delete_post = function (req, res) {
 
 // get single post
 exports.post_get = function (req, res) {
-  Post.findById(req.params.id, function (err, post) {
+  Post.findById(req.params.id).populate("author", (err, post) => {
     if (err) return res.json(err);
+
+    console.log(post.author.username);
 
     return res.json(post);
   });
