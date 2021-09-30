@@ -3,6 +3,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const Post = require("../models/user");
 const { body, validationResult } = require("express-validator");
 
 // get all users
@@ -116,7 +117,7 @@ exports.signup_post = [
 ];
 
 // get a single user
-exports.user = function (req, res, next) {
+exports.user = async function (req, res) {
   User.findById(req.params.id, (err, user) => {
     if (err) res.json(err);
 

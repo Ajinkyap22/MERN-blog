@@ -170,11 +170,11 @@ exports.delete_post = function (req, res) {
 
 // get single post
 exports.post_get = function (req, res) {
-  Post.findById(req.params.id).populate("author", (err, post) => {
-    if (err) return res.json(err);
+  Post.findById(req.params.id)
+    .populate("author")
+    .exec((err, post) => {
+      if (err) return res.json(err);
 
-    console.log(post.author.username);
-
-    return res.json(post);
-  });
+      return res.json(post);
+    });
 };
