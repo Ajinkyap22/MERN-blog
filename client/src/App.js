@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import Dashboard from "./Components/Dashboard";
 // import Preview from "./Components/Preview";
 import Home from "./Components/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -33,6 +34,12 @@ function App() {
             render={() => <Login setUser={setUser} />}
           />
           <Route exact path="/signup" component={Signup} />
+
+          <Route
+            exact
+            path="/dashboard"
+            render={() => <Dashboard user={user} posts={posts} />}
+          />
 
           {/* {posts.map((post) => (
             <Route

@@ -43,6 +43,17 @@ function Navbar(props) {
 
             <NavLink
               exact
+              to="/dashboard"
+              activeClassName="active"
+              className="nav-link mx-2"
+              aria-current="page"
+              hidden={props.user ? false : true}
+            >
+              Dashboard
+            </NavLink>
+
+            <NavLink
+              exact
               to="/login"
               className="btn btn-primary fw-bold rounded-pill mx-2"
               hidden={props.user ? true : false}
