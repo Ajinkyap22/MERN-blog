@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Dashboard from "./Components/Dashboard";
-// import Preview from "./Components/Preview";
+import Post from "./Components/Post";
 import Home from "./Components/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -41,13 +41,14 @@ function App() {
             render={() => <Dashboard user={user} posts={posts} />}
           />
 
-          {/* {posts.map((post) => (
+          {posts.map((post) => (
             <Route
+              key={post._id}
               exact
               path={`/posts/${post._id}`}
-              render={() => <Preview {...post} user={user} />}
+              render={() => <Post {...post} user={user} />}
             ></Route>
-          ))} */}
+          ))}
         </Switch>
       </Router>
     </div>

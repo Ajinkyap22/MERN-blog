@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Signup(props) {
   const [username, setUsername] = useState("");
@@ -29,9 +30,13 @@ function Signup(props) {
           <h1 className="text-center">Sign Up</h1>
           <p>
             Already a member?{" "}
-            <a href="/login" className="link-primary text-decoration-none">
+            <Link
+              exact
+              to="/login"
+              className="link-primary text-decoration-none"
+            >
               Login
-            </a>
+            </Link>
           </p>
         </div>
 

@@ -1,4 +1,5 @@
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function Preview(props) {
   return (
@@ -7,7 +8,9 @@ function Preview(props) {
       <p>{props.author.username}</p>
       <p>{moment(props.timestamp).format("lll")}</p>
 
-      <button className="btn btn-primary">View Post</button>
+      <Link exact to={`/posts/${props._id}`} className="btn btn-primary">
+        View Post
+      </Link>
     </div>
   );
 }
