@@ -48,7 +48,7 @@ exports.create_comment = [
         if (err) return res.json(err);
 
         Post.findByIdAndUpdate(
-          req.params.id,
+          req.params.post_id,
           { $push: { comments: comment } },
           function (err) {
             if (err) return res.json(err);
@@ -105,7 +105,7 @@ exports.edit_comment = [
 ];
 
 // delete comment
-exports.delete_comment = function (req, res) {
+exports.delete_comment = async function (req, res) {
   (req, res, next) => {
     jwt.verify(req.token, process.env.SECRET, (err, authData) => {
       if (err) return res.status(400).json(err);
@@ -113,6 +113,23 @@ exports.delete_comment = function (req, res) {
       next();
     });
   };
+
+  const post = await Post.findById(req.params.post_id).exec();
+  const postComments = post.comments;
+
+  const newComments = postComments.filter(
+    (comment) => comment._id != req.params.id
+  );
+
+  console.log(newComments);
+
+  Post.findByIdAndUpdate(
+    req.params.post_id,
+    { comments: newComments },
+    (err) => {
+      if (err) return next(err);
+    }
+  );
 
   Comment.findByIdAndRemove(req.params.id, (err) => {
     if (err) return res.json(err);
