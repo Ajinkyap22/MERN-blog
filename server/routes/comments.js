@@ -7,7 +7,7 @@ const verifyToken = require("../config/verifyToken");
 router.get("/", commentrController.comments);
 
 // create comment
-router.post("/create", verifyToken, commentrController.create_comment);
+router.post("/", commentrController.create_comment);
 
 // edit comment
 router.put("/:id/edit", verifyToken, commentrController.edit_comment);

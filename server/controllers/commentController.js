@@ -15,14 +15,6 @@ exports.comments = function (req, res) {
 };
 
 exports.create_comment = [
-  (req, res, next) => {
-    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
-      if (err) return res.status(400).json(err);
-      req.authData = authData;
-      next();
-    });
-  },
-
   body("username", "Usernmae cannot be empty")
     .trim()
     .isLength({ min: 1 })
@@ -106,22 +98,12 @@ exports.edit_comment = [
 
 // delete comment
 exports.delete_comment = async function (req, res) {
-  (req, res, next) => {
-    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
-      if (err) return res.status(400).json(err);
-      req.authData = authData;
-      next();
-    });
-  };
-
   const post = await Post.findById(req.params.post_id).exec();
   const postComments = post.comments;
 
   const newComments = postComments.filter(
     (comment) => comment._id != req.params.id
   );
-
-  console.log(newComments);
 
   Post.findByIdAndUpdate(
     req.params.post_id,
