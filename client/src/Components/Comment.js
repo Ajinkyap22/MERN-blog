@@ -2,7 +2,7 @@ import axios from "axios";
 import moment from "moment";
 
 function Comment(props) {
-  const deleteComment = function (e) {
+  const deleteComment = function () {
     axios
       .delete(
         `http://localhost:3000/api/posts/${props.postId}/comments/${props.comment._id}/delete`,
@@ -25,7 +25,7 @@ function Comment(props) {
   };
 
   return (
-    <div>
+    <div className="border">
       <p>{props.comment.username}</p>
       <small>{moment(props.comment.timestamp).format("lll")}</small>
       <p>{props.comment.content}</p>

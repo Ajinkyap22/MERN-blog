@@ -7,19 +7,16 @@ import { withRouter } from "react-router-dom";
 function Post(props) {
   const [content, setContent] = useState("");
   const [username, setUsername] = useState();
-  const [comments, setComments] = useState([props.comments]);
+  const [comments, setComments] = useState(props.comments);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     e.target.reset();
 
     let url = `http://localhost:3000/api/posts/${props._id}/comments/`;
 
     axios
-      .post(url, {
-        username,
-        content,
-      })
+      .post(url, { username, content })
       .then((res) => {
         setComments([...comments, res.data]);
       })
@@ -30,7 +27,7 @@ function Post(props) {
 
   useEffect(() => {
     if (props.user) setUsername(props.user.username);
-  }, [props.user]);
+  }, [props]);
 
   return (
     <main>
@@ -74,7 +71,7 @@ function Post(props) {
           <button className="btn btn-primary">Comment</button>
         </form>
 
-        {props.comments.map((comment) => (
+        {comments.map((comment) => (
           <div key={comment._id}>
             <Comment
               comment={comment}
