@@ -8,7 +8,7 @@ function Preview(props) {
       <p>{props.author.username}</p>
       <p>{moment(props.timestamp).format("lll")}</p>
 
-      <Link exact to={`/posts/${props._id}`} className="btn btn-primary">
+      <Link exact="true" to={`/posts/${props._id}`} className="btn btn-primary">
         View Post
       </Link>
     </div>

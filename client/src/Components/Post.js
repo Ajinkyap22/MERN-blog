@@ -6,12 +6,14 @@ import { withRouter } from "react-router-dom";
 
 function Post(props) {
   const [content, setContent] = useState("");
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState();
+  const [comments, setComments] = useState([props.comments]);
 
-  const submitHander = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
+    e.target.reset();
 
-    let url = `http://localhost:3000/api/posts/${props._id}/comments/create`;
+    let url = `http://localhost:3000/api/posts/${props._id}/comments/`;
 
     axios
       .post(url, {
@@ -19,7 +21,7 @@ function Post(props) {
         content,
       })
       .then((res) => {
-        console.log(res.data);
+        setComments([...comments, res.data]);
       })
       .catch((err) => {
         console.error(err);
@@ -28,7 +30,7 @@ function Post(props) {
 
   useEffect(() => {
     if (props.user) setUsername(props.user.username);
-  }, [props]);
+  }, [props.user]);
 
   return (
     <main>
@@ -45,7 +47,7 @@ function Post(props) {
       <section>
         <p>Comments ({props.comments.length})</p>
 
-        <form className="p-2" onSubmit={submitHander}>
+        <form className="p-2" onSubmit={submitHandler}>
           <div className="form-group">
             <label htmlFor="username" hidden={props.user ? true : false}>
               Username
@@ -74,7 +76,13 @@ function Post(props) {
 
         {props.comments.map((comment) => (
           <div key={comment._id}>
-            <Comment comment={comment} />
+            <Comment
+              comment={comment}
+              postId={props._id}
+              comments={comments}
+              setComments={setComments}
+              user={props.user}
+            />
           </div>
         ))}
       </section>

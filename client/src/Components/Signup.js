@@ -7,7 +7,7 @@ function Signup(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const submitHander = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3000/api/users/signup", {
@@ -30,17 +30,13 @@ function Signup(props) {
           <h1 className="text-center">Sign Up</h1>
           <p>
             Already a member?{" "}
-            <Link
-              exact
-              to="/login"
-              className="link-primary text-decoration-none"
-            >
+            <Link to="/login" className="link-primary text-decoration-none">
               Login
             </Link>
           </p>
         </div>
 
-        <form onSubmit={submitHander}>
+        <form onSubmit={submitHandler}>
           {/* username */}
           <div className="form-group py-2">
             <label htmlFor="username" className="fw-bold py-2">

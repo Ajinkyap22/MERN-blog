@@ -7,7 +7,7 @@ function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitHander = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
     axios
@@ -29,17 +29,13 @@ function Login(props) {
           <h1>Login</h1>
           <p>
             Not a member?{" "}
-            <Link
-              exact
-              to="/signup"
-              className="link-primary text-decoration-none"
-            >
+            <Link to="/signup" className="link-primary text-decoration-none">
               Sign up
             </Link>
           </p>
         </div>
 
-        <form onSubmit={submitHander}>
+        <form onSubmit={submitHandler}>
           {/* username */}
           <div className="form-group py-2">
             <label htmlFor="username" className="fw-bold py-2">
