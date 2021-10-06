@@ -69,17 +69,18 @@ exports.publish = function (req, res) {
       req.authData = authData;
       next();
     });
-  },
-    Post.findOneAndUpdate(
-      { _id: req.params.id },
-      { published: true },
-      { useFindAndModify: false, new: true }
-    )
-      .populate("author")
-      .exec((err, post) => {
-        if (err) return res.status(400).json(err);
-        res.json(post);
-      });
+  };
+
+  Post.findOneAndUpdate(
+    { _id: req.params.id },
+    { published: true },
+    { useFindAndModify: false, new: true }
+  )
+    .populate("author")
+    .exec((err, post) => {
+      if (err) return res.status(400).json(err);
+      res.json(post);
+    });
 };
 
 // unpublish post
