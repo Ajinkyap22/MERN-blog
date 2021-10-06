@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 
 function Navbar(props) {
   const logout = (e) => {
@@ -82,7 +82,7 @@ function Navbar(props) {
 
             <NavLink
               exact
-              to="/logout"
+              to="/"
               activeClassName="active"
               className="btn btn-primary fw-bold rounded-pill mx-2"
               hidden={props.user ? false : true}
@@ -97,4 +97,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default withRouter(Navbar);

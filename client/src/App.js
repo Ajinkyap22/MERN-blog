@@ -5,6 +5,7 @@ import Signup from "./Components/Signup";
 import Dashboard from "./Components/Dashboard";
 import Post from "./Components/Post";
 import Home from "./Components/Home";
+import PostForm from "./Components/PostForm";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -38,7 +39,17 @@ function App() {
           <Route
             exact
             path="/dashboard"
-            render={() => <Dashboard user={user} posts={posts} />}
+            render={() => (
+              <Dashboard user={user} posts={posts} setPosts={setPosts} />
+            )}
+          />
+
+          <Route
+            exact
+            path="/create"
+            render={() => (
+              <PostForm user={user} posts={posts} setPosts={setPosts} />
+            )}
           />
 
           {posts.map((post) => (

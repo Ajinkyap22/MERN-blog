@@ -2,21 +2,18 @@ import { useEffect, useState } from "react";
 import Preview from "./Preview";
 
 function Dashboard(props) {
-  const [published, setPublished] = useState([]);
-  const [unpublished, setUnpublished] = useState([]);
+  const [showPublished, setShowPublished] = useState(false);
+  const [showUnpublished, setShowUnpublished] = useState(false);
 
   useEffect(() => {
-    const publishedData = props.posts.filter(
-      (post) => post.author._id === props.user._id && post.published
-    );
+    props.posts.filter((post) => post.published).length
+      ? setShowPublished(true)
+      : setShowPublished(false);
 
-    const unpublishedData = props.posts.filter(
-      (post) => post.author._id === props.user._id && !post.published
-    );
-
-    setPublished(publishedData);
-    setUnpublished(unpublishedData);
-  }, [props]);
+    props.posts.filter((post) => !post.published).length
+      ? setShowUnpublished(true)
+      : setShowUnpublished(false);
+  }, [props.posts]);
 
   return (
     <div>
@@ -24,16 +21,21 @@ function Dashboard(props) {
 
       <section>
         <h2>Published Posts</h2>
-        <p hidden={published.length ? true : false}>
+        <p hidden={showPublished ? true : false}>
           You have no published posts.
         </p>
 
-        <div className="row w-100" hidden={published.length ? false : true}>
-          {published
+        <div className="row w-100" hidden={showPublished ? false : true}>
+          {props.posts
             .filter((post) => post.published)
             .map((post) => (
               <div className="col" key={post._id}>
-                <Preview {...post} />
+                <Preview
+                  {...post}
+                  publishing={true}
+                  setPosts={props.setPosts}
+                  posts={props.posts}
+                />
               </div>
             ))}
         </div>
@@ -41,16 +43,21 @@ function Dashboard(props) {
 
       <section>
         <h2>Unpublished Posts</h2>
-        <p hidden={unpublished.length ? true : false}>
+        <p hidden={showUnpublished ? true : false}>
           You have no unpublished posts.
         </p>
 
-        <div className="row w-100" hidden={unpublished.length ? false : true}>
-          {unpublished
+        <div className="row w-100" hidden={showUnpublished ? false : true}>
+          {props.posts
             .filter((post) => !post.published)
             .map((post) => (
               <div className="col" key={post._id}>
-                <Preview {...post} />
+                <Preview
+                  {...post}
+                  unpublishing={true}
+                  setPosts={props.setPosts}
+                  posts={props.posts}
+                />
               </div>
             ))}
         </div>
