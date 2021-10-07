@@ -16,7 +16,7 @@ router.post("/:id/publish", verifyToken, postController.publish);
 router.post("/:id/unpublish", verifyToken, postController.unpublish);
 
 // PUT update post
-router.put("/:id/update", verifyToken, postController.post_update);
+router.put("/:id/edit", verifyToken, postController.post_update);
 
 // DELETE delete post
 router.delete("/:id/delete", verifyToken, postController.delete_post);
