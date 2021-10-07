@@ -27,7 +27,7 @@ exports.create_post = [
 
   // validate and sanitize
   body("title", "Title cannot be empty").trim().isLength({ min: 1 }).escape(),
-  body("content", "Title cannot be empty").trim().isLength({ min: 1 }).escape(),
+  body("content", "Title cannot be empty").trim().isLength({ min: 1 }),
 
   // process request
   (req, res) => {
