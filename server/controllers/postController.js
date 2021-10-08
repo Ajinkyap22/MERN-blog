@@ -138,16 +138,13 @@ exports.post_update = [
     });
 
     // update post
-    Post.findByIdAndUpdate(
-      req.params.id,
-      post,
-      { new: true },
-      function (err, newpost) {
+    Post.findByIdAndUpdate(req.params.id, post, { new: true })
+      .populate("author")
+      .exec((err, newPost) => {
         if (err) return res.json(err);
 
-        return res.json(newpost);
-      }
-    );
+        return res.json(newPost);
+      });
   },
 ];
 
