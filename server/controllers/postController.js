@@ -36,7 +36,7 @@ exports.create_post = [
 
     if (!errors.isEmpty()) return res.json({ errors: errors.array() });
 
-    const { title, content, published } = req.body;
+    const { title, content, published, imgUrl } = req.body;
 
     Post.create(
       {
@@ -45,14 +45,13 @@ exports.create_post = [
         author: req.authData._id,
         published,
         timestamp: Date.now(),
+        imgUrl,
       },
       (err, post) => {
         if (err) return res.json(err);
 
         post.populate("author", (err, newPost) => {
           if (err) return res.json(err);
-
-          console.log(newPost);
 
           return res.json(newPost);
         });
@@ -134,6 +133,7 @@ exports.post_update = [
       author: req.authData._id,
       published: req.body.published,
       timestamp: Date.now(),
+      imgUrl: req.body.imgUrl,
       _id: req.params.id,
     });
 

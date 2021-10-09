@@ -8,6 +8,7 @@ const PostSchema = new Schema({
   comments: { type: Array, default: [] },
   published: { type: Boolean },
   timestamp: { type: Date },
+  imgUrl: { type: String },
 });
 
 module.exports = mongoose.model("Post", PostSchema);
