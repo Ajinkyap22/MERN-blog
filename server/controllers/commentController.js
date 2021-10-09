@@ -44,9 +44,9 @@ exports.create_comment = [
           { $push: { comments: comment } },
           function (err) {
             if (err) return res.json(err);
+            return res.json(comment);
           }
         );
-        return res.json(comment);
       }
     );
   },
