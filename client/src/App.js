@@ -57,7 +57,9 @@ function App() {
               key={post._id}
               exact
               path={`/posts/${post._id}`}
-              render={() => <Post {...post} user={user} />}
+              render={() => (
+                <Post {...post} user={user} posts={posts} setPosts={setPosts} />
+              )}
             ></Route>
           ))}
         </Switch>
@@ -67,13 +69,3 @@ function App() {
 }
 
 export default App;
-
-// home - all blogs
-// signup login
-// profile with user posts - published and unpublished
-// create post option
-// on post - edit, delete, unpublish option
-// comment option
-
-// navbar - logo, home, login, signup,
-// if logged in - logo, home, create, dashboard

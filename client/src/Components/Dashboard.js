@@ -6,14 +6,18 @@ function Dashboard(props) {
   const [showUnpublished, setShowUnpublished] = useState(false);
 
   useEffect(() => {
-    props.posts.filter((post) => post.published).length
+    props.posts.filter(
+      (post) => post.author._id === props.user._id && post.published
+    ).length
       ? setShowPublished(true)
       : setShowPublished(false);
 
-    props.posts.filter((post) => !post.published).length
+    props.posts.filter(
+      (post) => post.author._id === props.user._id && !post.published
+    ).length
       ? setShowUnpublished(true)
       : setShowUnpublished(false);
-  }, [props.posts]);
+  }, [props.posts, props.user]);
 
   return (
     <div>
@@ -27,14 +31,15 @@ function Dashboard(props) {
 
         <div className="row w-100" hidden={showPublished ? false : true}>
           {props.posts
-            .filter((post) => post.published)
+            .filter(
+              (post) => post.author._id === props.user._id && post.published
+            )
             .map((post) => (
               <div className="col" key={post._id}>
                 <Preview
                   {...post}
                   publishing={true}
                   setPosts={props.setPosts}
-                  posts={props.posts}
                 />
               </div>
             ))}
@@ -49,7 +54,9 @@ function Dashboard(props) {
 
         <div className="row w-100" hidden={showUnpublished ? false : true}>
           {props.posts
-            .filter((post) => !post.published)
+            .filter(
+              (post) => post.author._id === props.user._id && !post.published
+            )
             .map((post) => (
               <div className="col" key={post._id}>
                 <Preview

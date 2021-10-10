@@ -9,12 +9,12 @@ function CommentForm(props) {
     e.preventDefault();
     e.target.reset();
 
-    let url = `http://localhost:3000/api/posts/${props._id}/comments/`;
+    let url = `http://localhost:3000/api/posts/${props.id}/comments/`;
 
     axios
       .post(url, { username, content })
       .then((res) => {
-        props.setComments([...props.comments, res.data]);
+        props.setComments((prevState) => [...prevState, res.data]);
       })
       .catch((err) => {
         console.error(err);
@@ -26,7 +26,7 @@ function CommentForm(props) {
   }, [props]);
 
   return (
-    <form className="p-2" onSubmit={submitHandler}>
+    <form className="py-2" onSubmit={submitHandler}>
       <div className="form-group">
         <label htmlFor="username" hidden={props.user ? true : false}>
           Username
@@ -44,13 +44,14 @@ function CommentForm(props) {
       <div className="form-group py-3">
         <textarea
           name="content"
-          className="form-control w-25"
+          className="form-control"
           onChange={(e) => setContent(e.target.value)}
+          rows="3"
           required
         ></textarea>
       </div>
 
-      <button className="btn btn-primary">Comment</button>
+      <button className="btn btn-dark">Comment</button>
     </form>
   );
 }

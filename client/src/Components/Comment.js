@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Comment(props) {
   const [newComment, setNewComment] = useState(props.comment.content);
-  const [edit, setEdit] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   const deleteComment = function () {
     axios
@@ -49,7 +49,8 @@ function Comment(props) {
             comment._id !== props.comment._id ? comment : res.data
           )
         );
-        setEdit(false);
+        props.setCommentEdit(false);
+        setEditing(false);
       })
       .catch((err) => {
         console.error(err);
@@ -57,43 +58,49 @@ function Comment(props) {
   };
 
   const handleEdit = function () {
-    setEdit(true);
+    props.setCommentEdit(true);
+    setEditing(true);
   };
 
   return (
     <div>
-      <div className="border" hidden={edit ? true : false}>
-        <p>{props.comment.username}</p>
-        <small>{moment(props.comment.timestamp).format("lll")}</small>
-        <p>{props.comment.content}</p>
+      <div className="border p-2 my-2" hidden={editing ? true : false}>
+        <small>
+          {props.comment.username} -
+          {moment(props.comment.timestamp).format("lll")}
+        </small>
 
-        <button
-          className="btn btn-danger"
-          onClick={deleteComment}
-          hidden={
-            props.user && props.user.username === props.comment.username
-              ? false
-              : true
-          }
-        >
-          Delete
-        </button>
+        <p className="lead fw-normal pt-2">{props.comment.content}</p>
 
-        <button
-          className="btn btn-secondary"
-          hidden={
-            props.user && props.user.username === props.comment.username
-              ? false
-              : true
-          }
-          onClick={handleEdit}
-        >
-          Edit
-        </button>
+        <div>
+          <button
+            className="btn btn-danger "
+            onClick={deleteComment}
+            hidden={
+              props.user && props.user.username === props.comment.username
+                ? false
+                : true
+            }
+          >
+            Delete
+          </button>
+
+          <button
+            className="btn btn-outline-dark mx-3"
+            hidden={
+              props.user && props.user.username === props.comment.username
+                ? false
+                : true
+            }
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+        </div>
       </div>
 
-      <div hidden={edit ? false : true}>
-        <form className="p-2" onSubmit={editComment}>
+      <div hidden={editing ? false : true}>
+        <form className="py-2" onSubmit={editComment}>
           <div className="form-group py-3">
             <textarea
               name="content"
@@ -104,7 +111,7 @@ function Comment(props) {
             ></textarea>
           </div>
 
-          <button className="btn btn-primary">Save</button>
+          <button className="btn btn-dark">Save</button>
         </form>
       </div>
     </div>

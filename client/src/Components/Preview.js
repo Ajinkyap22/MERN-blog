@@ -32,12 +32,18 @@ function Preview(props) {
   };
 
   return (
-    <div className="text-center">
-      <p className="lead">{props.title}</p>
-      <p>{props.author.username}</p>
-      <p>{moment(props.timestamp).format("lll")}</p>
+    <div className="text-center bg-white rounded py-4 shadow">
+      <div className="pb-3">
+        <p className="fw-bold lead p-0">{props.title}</p>
+        <p className="p-0">By {props.author.username}</p>
+      </div>
+      <p className="py-2">{moment(props.timestamp).format("lll")}</p>
 
-      <Link exact="true" to={`/posts/${props._id}`} className="btn btn-primary">
+      <Link
+        exact="true"
+        to={`/posts/${props._id}`}
+        className="btn btn-outline-dark"
+      >
         View Post
       </Link>
 
