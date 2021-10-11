@@ -32,23 +32,26 @@ function Preview(props) {
   };
 
   return (
-    <div className="text-center bg-white rounded py-4 shadow">
-      <div className="pb-3">
-        <p className="fw-bold lead p-0">{props.title}</p>
-        <p className="p-0">By {props.author.username}</p>
-      </div>
-      <p className="py-2">{moment(props.timestamp).format("lll")}</p>
-
+    <div className="text-center bg-white shadow h-100">
       <Link
         exact="true"
-        to={`/posts/${props._id}`}
-        className="btn btn-outline-dark"
+        to={`posts/${props._id}`}
+        className="text-decoration-none text-dark"
       >
-        View Post
+        <div>
+          <img src={props.imgUrl} className="img-fluid" alt="Blog related" />
+        </div>
+
+        <div className="p-2">
+          <p className="fw-bold lead p-0">{props.title}</p>
+          <p className="p-0 text-secondary">
+            By {props.author.username} / {moment(props.timestamp).format("lll")}
+          </p>
+        </div>
       </Link>
 
       <button
-        className="btn btn-primary"
+        className="btn btn-outline-dark mb-3"
         hidden={props.publishing || props.unpublishing ? false : true}
         onClick={handlePublish}
       >

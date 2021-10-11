@@ -1,7 +1,15 @@
 import Preview from "./Preview";
 import illustration from "../images/illustration.png";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Home(props) {
+  const [published, setPublished] = useState([]);
+
+  useEffect(() => {
+    setPublished(() => props.posts.filter((post) => post.published));
+  }, [props]);
+
   return (
     <main className="pb-3">
       <section className="p-3 d-flex justify-content-center align-items-center bg-white">
@@ -18,11 +26,11 @@ function Home(props) {
         <img src={illustration} className="w-50 p-3" alt="Illustration" />
       </section>
 
-      <h4 className="fw-bold p-3">Posts ({props.posts.length})</h4>
+      <h4 className="fw-bold p-3">Posts ({published.length})</h4>
 
-      <section className="row row-cols-4 p-3 pt-1 w-100">
-        {props.posts.map((post) => (
-          <div className="col g-5" key={post._id}>
+      <section className="row row-cols-3 p-3 pt-1 w-100">
+        {published.map((post) => (
+          <div className="col p-2 px-3" key={post._id}>
             <Preview {...post} />
           </div>
         ))}

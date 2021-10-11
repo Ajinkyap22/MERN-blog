@@ -29,7 +29,10 @@ function Dashboard(props) {
           You have no published posts.
         </p>
 
-        <div className="row w-100" hidden={showPublished ? false : true}>
+        <div
+          className="row row-cols-3 p-3 pt-1 w-100"
+          hidden={showPublished ? false : true}
+        >
           {props.posts
             .filter(
               (post) => post.author._id === props.user._id && post.published
@@ -52,7 +55,10 @@ function Dashboard(props) {
           You have no unpublished posts.
         </p>
 
-        <div className="row w-100" hidden={showUnpublished ? false : true}>
+        <div
+          className="row row-cols-3 p-3 pt-1 w-100"
+          hidden={showUnpublished ? false : true}
+        >
           {props.posts
             .filter(
               (post) => post.author._id === props.user._id && !post.published
