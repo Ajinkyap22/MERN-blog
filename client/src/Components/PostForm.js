@@ -9,7 +9,7 @@ function PostForm(props) {
     content: props.content || "",
     author: props.user?._id,
     comments: props.comments || [],
-    published: props.published || false,
+    published: props.published || true,
     imgUrl: props.imgUrl || "",
   });
 
@@ -33,7 +33,6 @@ function PostForm(props) {
         })
         .catch((err) => {
           console.error(err);
-          console.log(err.response);
         });
     } else {
       axios

@@ -7,10 +7,10 @@ function Navbar(props) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid py-2">
         <NavLink exact to="/" className="navbar-brand px-3">
-          Blog
+          Blogify
         </NavLink>
 
         <button
@@ -55,7 +55,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/login"
-              className="btn btn-primary fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill mx-2"
               hidden={props.user ? true : false}
             >
               Login
@@ -64,7 +64,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/signup"
-              className="btn btn-primary fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill mx-2"
               hidden={props.user ? true : false}
             >
               Signup
@@ -74,7 +74,7 @@ function Navbar(props) {
               exact
               to="/create"
               activeClassName="active"
-              className="btn btn-primary fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill mx-2"
               hidden={props.user ? false : true}
             >
               Create Post
@@ -84,7 +84,7 @@ function Navbar(props) {
               exact
               to="/"
               activeClassName="active"
-              className="btn btn-primary fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill mx-2"
               hidden={props.user ? false : true}
               onClick={logout}
             >

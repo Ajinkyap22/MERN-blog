@@ -30,7 +30,7 @@ function Home(props) {
 
       <section className="row row-cols-3 p-3 pt-1 w-100">
         {published.map((post) => (
-          <div className="col p-2 px-3" key={post._id}>
+          <div className="col p-3 px-3" key={post._id}>
             <Preview {...post} />
           </div>
         ))}

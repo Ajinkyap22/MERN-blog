@@ -22,8 +22,8 @@ function Preview(props) {
       )
       .then((res) => {
         // update posts array
-        props.setPosts(
-          props.posts.map((post) => (post._id === props._id ? res.data : post))
+        props.setPosts((prevState) =>
+          prevState.map((post) => (post._id === props._id ? res.data : post))
         );
       })
       .catch((err) => {
