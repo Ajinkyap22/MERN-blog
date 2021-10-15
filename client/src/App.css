@@ -9,3 +9,18 @@
 .logo-title {
   width: 3rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .auth {
+    width: 80% !important;
+  }
+
+  .field {
+    width: 75% !important;
+  }
+
+  .post {
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+}

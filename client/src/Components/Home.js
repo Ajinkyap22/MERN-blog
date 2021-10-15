@@ -12,8 +12,8 @@ function Home(props) {
   }, [props]);
 
   return (
-    <main className="pb-3">
-      <section className="p-3 d-flex justify-content-center align-items-center">
+    <main className="py-5">
+      <section className="p-3 pt-5 d-flex justify-content-center align-items-center">
         <div>
           <h1 className="display-2 fw-bold">Blogify</h1>
           <p>
@@ -40,14 +40,18 @@ function Home(props) {
           </Link>
         </div>
 
-        <img src={illustration} className="w-50 p-3" alt="Illustration" />
+        <img
+          src={illustration}
+          className="w-50 p-3 d-none d-md-block "
+          alt="Illustration"
+        />
       </section>
 
       <h4 className="fw-bold p-3">Posts ({published.length})</h4>
 
-      <section className="row row-cols-3 p-3 pt-1 w-100">
+      <section className="row p-3 pt-1 w-100">
         {published.map((post) => (
-          <div className="col p-3 px-3" key={post._id}>
+          <div className="col-12 col-md-4 p-3 px-3" key={post._id}>
             <Preview {...post} />
           </div>
         ))}

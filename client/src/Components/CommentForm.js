@@ -26,14 +26,18 @@ function CommentForm(props) {
   }, [props]);
 
   return (
-    <form className="py-2" onSubmit={submitHandler}>
+    <form onSubmit={submitHandler}>
       <div className="form-group">
-        <label htmlFor="username" hidden={props.user ? true : false}>
-          Username
+        <label
+          htmlFor="username"
+          className="fw-bold py-2"
+          hidden={props.user ? true : false}
+        >
+          Username <span className="text-danger">*</span>
         </label>
         <input
           type={props.user ? "hidden" : "text"}
-          className="form-control w-25"
+          className="form-control w-25 field"
           name="username"
           defaultValue={props.user ? props.user.username : ""}
           onChange={(e) => setUsername(e.target.value)}

@@ -9,9 +9,9 @@ function Navbar(props) {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div className="container-fluid py-1">
+      <div className="container-fluid">
         <NavLink exact to="/" className="navbar-brand px-3">
-          <img src={Logo} className="logo mx-2 mb-1" alt="" />
+          <img src={Logo} className="logo m-2" alt="" />
           <span className="h4 fw-bold">Blogify</span>
         </NavLink>
 
@@ -36,7 +36,7 @@ function Navbar(props) {
               exact
               to="/"
               activeClassName="active"
-              className="nav-link mx-2"
+              className="nav-link m-2"
               aria-current="page"
               hidden={props.user ? false : true}
             >
@@ -47,7 +47,7 @@ function Navbar(props) {
               exact
               to="/dashboard"
               activeClassName="active"
-              className="nav-link mx-2"
+              className="nav-link m-2"
               aria-current="page"
               hidden={props.user ? false : true}
             >
@@ -57,7 +57,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/login"
-              className="btn btn-light fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill m-2"
               hidden={props.user ? true : false}
             >
               Login
@@ -66,7 +66,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/signup"
-              className="btn btn-light fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill m-2"
               hidden={props.user ? true : false}
             >
               Signup
@@ -76,7 +76,7 @@ function Navbar(props) {
               exact
               to="/create"
               activeClassName="active"
-              className="btn btn-light fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill m-2"
               hidden={props.user ? false : true}
             >
               Create Post
@@ -86,7 +86,7 @@ function Navbar(props) {
               exact
               to="/"
               activeClassName="active"
-              className="btn btn-light fw-bold rounded-pill mx-2"
+              className="btn btn-light fw-bold rounded-pill m-2"
               hidden={props.user ? false : true}
               onClick={logout}
             >

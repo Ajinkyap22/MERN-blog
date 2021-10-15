@@ -47,12 +47,15 @@ function Post(props) {
   };
 
   return (
-    <div className="pb-3 py-5">
-      <main hidden={editing ? true : false} className="w-75 m-auto">
+    <div className="my-5">
+      <main
+        hidden={editing ? true : false}
+        className="w-75 m-auto bg-white shadow p-4 post"
+      >
         <section className="d-flex flex-column align-items-center">
-          <div className="py-3">
-            <h1>{props.title}</h1>
-            <p>
+          <div className="py-3 mt-4 text-center">
+            <h1 className="fw-bold">{props.title}</h1>
+            <p className="text-secondary">
               By {props.author.username} -{" "}
               {moment(props.timestamp).format("lll")}
             </p>
@@ -72,12 +75,12 @@ function Post(props) {
 
           <img
             src={props.imgUrl}
-            className="img-fluid py-3"
+            className="img-fluid py-3 pb-4"
             alt="Blog related"
           />
         </section>
 
-        <section>{ReactHtmlParser(props.content)}</section>
+        <section className="py-3">{ReactHtmlParser(props.content)}</section>
 
         <section>
           <p className="fw-bold">Comments ({comments ? comments.length : 0})</p>

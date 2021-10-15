@@ -24,12 +24,12 @@ function Login(props) {
   };
 
   return (
-    <main className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 pt-5">
+    <main className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 mt-4">
       <p className="text-center pb-3 display-6 fw-bold">
         <img src={Logo} className="logo-title mx-1 mb-1" alt="" /> Blogify
       </p>
 
-      <div className="bg-white w-50 shadow p-3 ">
+      <div className="bg-white w-50 auth shadow p-3 ">
         <div className="text-center">
           <h1>Login</h1>
           <p>

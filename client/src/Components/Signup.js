@@ -25,12 +25,12 @@ function Signup(props) {
   };
 
   return (
-    <main className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 pt-5">
-      <p className="text-center pt-3 display-6 fw-bold">
+    <main className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 mt-5">
+      <p className="text-center mt-4 display-6 fw-bold">
         <img src={Logo} className="logo-title mx-1 mb-1" alt="" /> Blogify
       </p>
 
-      <div className="bg-white w-50 shadow p-3 ">
+      <div className="bg-white w-50 auth shadow p-3 ">
         <div className="text-center">
           <h1 className="text-center">Sign Up</h1>
           <p>
