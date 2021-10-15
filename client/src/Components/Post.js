@@ -47,7 +47,7 @@ function Post(props) {
   };
 
   return (
-    <div className="pb-3">
+    <div className="pb-3 py-5">
       <main hidden={editing ? true : false} className="w-75 m-auto">
         <section className="d-flex flex-column align-items-center">
           <div className="py-3">

@@ -1,4 +1,5 @@
 import { withRouter, NavLink } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 function Navbar(props) {
   const logout = (e) => {
@@ -7,10 +8,11 @@ function Navbar(props) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid py-2">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div className="container-fluid py-1">
         <NavLink exact to="/" className="navbar-brand px-3">
-          Blogify
+          <img src={Logo} className="logo mx-2 mb-1" alt="" />
+          <span className="h4 fw-bold">Blogify</span>
         </NavLink>
 
         <button

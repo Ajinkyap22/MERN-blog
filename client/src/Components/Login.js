@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
+import Logo from "../images/logo.png";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -23,8 +24,12 @@ function Login(props) {
   };
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center h-100">
-      <div className="bg-light w-50 shadow-sm p-3 ">
+    <main className="container-fluid d-flex flex-column justify-content-center align-items-center h-100 pt-5">
+      <p className="text-center pb-3 display-6 fw-bold">
+        <img src={Logo} className="logo-title mx-1 mb-1" alt="" /> Blogify
+      </p>
+
+      <div className="bg-white w-50 shadow p-3 ">
         <div className="text-center">
           <h1>Login</h1>
           <p>
@@ -37,7 +42,7 @@ function Login(props) {
 
         <form onSubmit={submitHandler}>
           {/* username */}
-          <div className="form-group py-2">
+          <div className="form-group pb-2">
             <label htmlFor="username" className="fw-bold py-2">
               Username<span className="text-danger"> *</span>
             </label>
@@ -66,19 +71,19 @@ function Login(props) {
 
           {/* buttons */}
           <div className="py-3">
-            <button className="btn btn-primary mr-2" type="submit">
+            <button className="btn btn-dark mr-2" type="submit">
               Login
             </button>
             <a
               href="/"
-              className="text-secondary text-decoration-none mx-2 p-2"
+              className="text-secondary text-decoration-none mx-2 px-2"
             >
               Go Back
             </a>
           </div>
         </form>
       </div>
-    </div>
+    </main>
   );
 }
 
