@@ -7,8 +7,12 @@ const jwt = require("jsonwebtoken");
 exports.comments = function (req, res) {
   Comment.find()
     .sort([["timestamp", "descending"]])
-    .exec((err, comments) => {
+    .exec((err, data) => {
       if (err) return res.json(err);
+
+      let comments = data.filter(
+        (comment) => comment.postId === req.params.post_id
+      );
 
       return res.json(comments);
     });
@@ -35,18 +39,11 @@ exports.create_comment = [
 
     // create comment
     Comment.create(
-      { username, content, timestamp: Date.now() },
+      { username, content, postId: req.params.post_id, timestamp: Date.now() },
       (err, comment) => {
         if (err) return res.json(err);
 
-        Post.findByIdAndUpdate(
-          req.params.post_id,
-          { $push: { comments: comment } },
-          function (err) {
-            if (err) return res.json(err);
-            return res.json(comment);
-          }
-        );
+        return res.json(comment);
       }
     );
   },
@@ -81,6 +78,7 @@ exports.edit_comment = [
     const comment = {
       username: req.body.username,
       content: req.body.content,
+      postId: req.params.post_id,
     };
 
     Comment.findByIdAndUpdate(
@@ -97,22 +95,7 @@ exports.edit_comment = [
 ];
 
 // delete comment
-exports.delete_comment = async function (req, res) {
-  const post = await Post.findById(req.params.post_id).exec();
-  const postComments = post.comments;
-
-  const newComments = postComments.filter(
-    (comment) => comment._id != req.params.id
-  );
-
-  Post.findByIdAndUpdate(
-    req.params.post_id,
-    { comments: newComments },
-    (err) => {
-      if (err) return next(err);
-    }
-  );
-
+exports.delete_comment = function (req, res) {
   Comment.findByIdAndRemove(req.params.id, (err) => {
     if (err) return res.json(err);
 

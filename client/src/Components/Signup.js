@@ -7,6 +7,7 @@ function Signup(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -20,7 +21,13 @@ function Signup(props) {
         props.history.push("/login");
       })
       .catch((err) => {
-        console.error(err);
+        if (err.response.status === 409) {
+          setError(err.response.data.error);
+        } else if (err.response.status === 401) {
+          setError(err.response.data.error);
+        } else {
+          console.error(err);
+        }
       });
   };
 
@@ -40,6 +47,10 @@ function Signup(props) {
             </Link>
           </p>
         </div>
+
+        <p hidden={error ? false : true} className="text-danger fw-bold">
+          &#9888; {error}
+        </p>
 
         <form onSubmit={submitHandler}>
           {/* username */}

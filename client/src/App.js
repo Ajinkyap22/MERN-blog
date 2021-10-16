@@ -27,7 +27,11 @@ function App() {
           <Navbar user={user} setUser={setUser} />
         </header>
         <Switch>
-          <Route exact path="/" render={() => <Home posts={posts} />} />
+          <Route
+            exact
+            path="/"
+            render={() => <Home posts={posts} user={user} />}
+          />
 
           <Route
             exact

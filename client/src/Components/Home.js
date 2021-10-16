@@ -22,7 +22,12 @@ function Home(props) {
             you stay up-to-date with the latest developments in the tech field
             so you can always stay ahead of the curve.
           </p>
-          <Link exact="true" to="/signup" className="btn btn-dark">
+          <Link
+            exact="true"
+            to="/signup"
+            className="btn btn-dark"
+            hidden={props.user ? true : false}
+          >
             Get Started{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"

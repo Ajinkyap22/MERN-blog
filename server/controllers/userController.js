@@ -21,8 +21,8 @@ exports.users_get = function (req, res, next) {
 exports.login_post = function (req, res) {
   passport.authenticate("local", { session: false }, (err, user) => {
     if (err || !user) {
-      return res.status(400).json({
-        message: "Could not authenticate",
+      return res.status(401).json({
+        message: "Incorrect Username or Password",
         user,
       });
     }
@@ -30,7 +30,7 @@ exports.login_post = function (req, res) {
     jwt.sign(
       { _id: user._id, username: user.username },
       process.env.SECRET,
-      { expiresIn: "5m" },
+      { expiresIn: "10m" },
       (err, token) => {
         if (err) return res.status(400).json(err);
         res.json({
@@ -73,13 +73,13 @@ exports.signup_post = [
     // check if username exists
     const userExists = await User.find({ username: req.body.username });
     if (userExists.length > 0) {
-      return res.json({
+      return res.status(409).json({
         error: "Username already exists",
       });
     }
 
     if (req.body.password !== req.body.confirmPassword) {
-      return res.json({
+      return res.status(401).json({
         error: "Confirmed Password must be the same as password.",
       });
     }

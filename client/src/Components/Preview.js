@@ -1,6 +1,7 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Default from "../images/default.jpg";
 
 function Preview(props) {
   const handlePublish = function () {
@@ -39,7 +40,11 @@ function Preview(props) {
         className="text-decoration-none text-dark"
       >
         <div>
-          <img src={props.imgUrl} className="img-fluid" alt="Blog related" />
+          <img
+            src={props.imgUrl || Default}
+            className="img-fluid"
+            alt="Blog related"
+          />
         </div>
 
         <div className="p-2">

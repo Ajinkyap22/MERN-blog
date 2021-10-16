@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
+import Default from "../images/default.jpg";
 
 function Post(props) {
   const [comments, setComments] = useState([]);
@@ -74,7 +75,7 @@ function Post(props) {
           </div>
 
           <img
-            src={props.imgUrl}
+            src={props.imgUrl || Default}
             className="img-fluid py-3 pb-4"
             alt="Blog related"
           />

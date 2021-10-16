@@ -7,6 +7,7 @@ import Logo from "../images/logo.png";
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -19,7 +20,11 @@ function Login(props) {
         props.history.push("/");
       })
       .catch((err) => {
-        console.error(err);
+        if (err.response.status === 401) {
+          setError(err.response.data.message);
+        } else {
+          console.error(err);
+        }
       });
   };
 
@@ -39,6 +44,10 @@ function Login(props) {
             </Link>
           </p>
         </div>
+
+        <p hidden={error ? false : true} className="text-danger fw-bold">
+          &#9888; {error}
+        </p>
 
         <form onSubmit={submitHandler}>
           {/* username */}

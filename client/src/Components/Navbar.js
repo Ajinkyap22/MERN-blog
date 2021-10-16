@@ -31,12 +31,12 @@ function Navbar(props) {
           className="collapse navbar-collapse justify-content-end px-3"
           id="navbarNavAltMarkup"
         >
-          <div className="navbar-nav">
+          <div className="navbar-nav text-center align-items-center">
             <NavLink
               exact
               to="/"
               activeClassName="active"
-              className="nav-link m-2"
+              className="nav-link mx-2"
               aria-current="page"
               hidden={props.user ? false : true}
             >
@@ -47,7 +47,7 @@ function Navbar(props) {
               exact
               to="/dashboard"
               activeClassName="active"
-              className="nav-link m-2"
+              className="nav-link mx-2"
               aria-current="page"
               hidden={props.user ? false : true}
             >
