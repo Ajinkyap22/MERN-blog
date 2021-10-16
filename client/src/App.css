@@ -10,6 +10,21 @@
   width: 3rem;
 }
 
+.btn:hover {
+  transform: scale(1.05);
+  transition: all 0.3s;
+}
+
+.preview:hover {
+  transform: scale(1.02);
+  transition: all 0.3s;
+}
+
+.github:hover {
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+
 @media only screen and (max-width: 768px) {
   .auth {
     width: 80% !important;

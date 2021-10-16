@@ -55,7 +55,12 @@ function CommentForm(props) {
         ></textarea>
       </div>
 
-      <button className="btn btn-dark">Comment</button>
+      <button
+        className="btn btn-dark"
+        disabled={content && username ? false : true}
+      >
+        Comment
+      </button>
     </form>
   );
 }

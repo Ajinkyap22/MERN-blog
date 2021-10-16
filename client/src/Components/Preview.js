@@ -33,7 +33,7 @@ function Preview(props) {
   };
 
   return (
-    <div className="text-center bg-white shadow h-100">
+    <div className="text-center bg-white shadow h-100 preview">
       <Link
         exact="true"
         to={`posts/${props._id}`}

@@ -86,13 +86,15 @@ function PostForm(props) {
     });
   };
   return (
-    <div>
-      <h2>{props.editing ? "Edit Blog Post" : "Create Blog Post"}</h2>
+    <div className="mt-5 p-3">
+      <h2 className="pt-4 fw-bold">
+        {props.editing ? "Edit Blog Post" : "Create Blog Post"}
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <div className="form-group py-3">
           <label htmlFor="title" className="fw-bold py-2">
-            Title
+            Title <span className="text-danger">*</span>
           </label>
           <input
             type="text"
@@ -106,7 +108,7 @@ function PostForm(props) {
 
         <div className="form-group py-3">
           <label htmlFor="imgUrl" className="fw-bold py-2">
-            Image URL
+            Image URL (Optional)
           </label>
           <input
             type="text"
@@ -120,7 +122,7 @@ function PostForm(props) {
 
         <div className="form-group py-3">
           <label htmlFor="content" className="fw-bold py-2">
-            Content
+            Content <span className="text-danger">*</span>
           </label>
           <Editor
             apiKey={process.env.REACT_APP_API_KEY}
@@ -146,12 +148,20 @@ function PostForm(props) {
         </div>
 
         <div className="py-3">
-          <button type="submit" className="btn btn-primary mx-2">
+          <button
+            type="submit"
+            className="btn btn-dark mx-2"
+            disabled={
+              formData.title && formData.content && formData.author
+                ? false
+                : true
+            }
+          >
             {props.editing ? "Save" : "Post"}
           </button>
           <button
             type="button"
-            className="btn btn-secondary mx-2"
+            className="btn btn-outline-secondary fw-bold mx-2"
             onClick={clearForm}
           >
             Clear

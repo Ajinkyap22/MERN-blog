@@ -20,12 +20,13 @@ function Dashboard(props) {
   }, [props.posts, props.user]);
 
   return (
-    <div>
-      <h1>{`${props.user.username}'s Dashboard'`}</h1>
+    <div className="mt-5">
+      <h1 className="pt-5 text-center fw-bold">{`${props.user.username}'s Dashboard`}</h1>
 
-      <section>
-        <h2>Published Posts</h2>
-        <p hidden={showPublished ? true : false}>
+      <section className="p-2">
+        <h3>Published Posts</h3>
+        <hr />
+        <p className="text-center" hidden={showPublished ? true : false}>
           You have no published posts.
         </p>
 
@@ -38,7 +39,7 @@ function Dashboard(props) {
               (post) => post.author._id === props.user._id && post.published
             )
             .map((post) => (
-              <div className="col" key={post._id}>
+              <div className="col-12 col-md-4" key={post._id}>
                 <Preview
                   {...post}
                   publishing={true}
@@ -49,9 +50,10 @@ function Dashboard(props) {
         </div>
       </section>
 
-      <section>
-        <h2>Unpublished Posts</h2>
-        <p hidden={showUnpublished ? true : false}>
+      <section className="p-2 pt-3">
+        <h3>Unpublished Posts</h3>
+        <hr />
+        <p className="text-center p-3" hidden={showUnpublished ? true : false}>
           You have no unpublished posts.
         </p>
 
