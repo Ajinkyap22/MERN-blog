@@ -15,6 +15,9 @@ function CommentForm(props) {
       .post(url, { username, content })
       .then((res) => {
         props.setComments((prevState) => [...prevState, res.data]);
+
+        props.setShowToast(true);
+        props.setToastText("Comment Created Successfully.");
       })
       .catch((err) => {
         console.error(err);

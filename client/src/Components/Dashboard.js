@@ -31,7 +31,7 @@ function Dashboard(props) {
         </p>
 
         <div
-          className="row row-cols-3 p-3 pt-1 w-100"
+          className="row p-3 pt-1 w-100"
           hidden={showPublished ? false : true}
         >
           {props.posts
@@ -44,6 +44,8 @@ function Dashboard(props) {
                   {...post}
                   publishing={true}
                   setPosts={props.setPosts}
+                  setShowToast={props.setShowToast}
+                  setToastText={props.setToastText}
                 />
               </div>
             ))}
@@ -58,7 +60,7 @@ function Dashboard(props) {
         </p>
 
         <div
-          className="row row-cols-3 p-3 pt-1 w-100"
+          className="row p-3 pt-1 w-100"
           hidden={showUnpublished ? false : true}
         >
           {props.posts
@@ -66,12 +68,14 @@ function Dashboard(props) {
               (post) => post.author._id === props.user._id && !post.published
             )
             .map((post) => (
-              <div className="col" key={post._id}>
+              <div className="col-12 col-md-4" key={post._id}>
                 <Preview
                   {...post}
                   unpublishing={true}
                   setPosts={props.setPosts}
                   posts={props.posts}
+                  setShowToast={props.setShowToast}
+                  setToastText={props.setToastText}
                 />
               </div>
             ))}

@@ -26,6 +26,13 @@ function Preview(props) {
         props.setPosts((prevState) =>
           prevState.map((post) => (post._id === props._id ? res.data : post))
         );
+
+        let toastText = res.data.published
+          ? "Post Published Successfully"
+          : "Post Unpublished Successfully.";
+
+        props.setShowToast(true);
+        props.setToastText(toastText);
       })
       .catch((err) => {
         console.error(err);

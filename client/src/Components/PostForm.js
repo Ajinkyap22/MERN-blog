@@ -29,6 +29,9 @@ function PostForm(props) {
         .then((res) => {
           props.setPosts((prevState) => [...prevState, res.data]);
 
+          props.setShowToast(true);
+          props.setToastText("Post Created Successfully.");
+
           props.history.push(`/posts/${res.data._id}`);
         })
         .catch((err) => {
@@ -47,6 +50,9 @@ function PostForm(props) {
           );
 
           props.setEditing(false);
+
+          props.setShowToast(true);
+          props.setToastText("Post Edited Successfully.");
 
           props.history.push(`/posts/${res.data._id}`);
         })
