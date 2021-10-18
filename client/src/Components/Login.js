@@ -17,7 +17,7 @@ function Login(props) {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/users/login", { username, password })
+      .post("/api/users/login", { username, password })
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
         props.setUser(res.data.user);

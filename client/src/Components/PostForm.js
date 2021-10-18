@@ -31,7 +31,7 @@ function PostForm(props) {
     // if not editing create post request
     if (!props.editing) {
       axios
-        .post("http://localhost:3000/api/posts/create", formData, headers)
+        .post("/api/posts/create", formData, headers)
         .then((res) => {
           props.setPosts((prevState) => [...prevState, res.data]);
 
@@ -45,11 +45,7 @@ function PostForm(props) {
         });
     } else {
       axios
-        .put(
-          `http://localhost:3000/api/posts/${props.id}/edit`,
-          formData,
-          headers
-        )
+        .put(`/api/posts/${props.id}/edit`, formData, headers)
         .then((res) => {
           props.setPosts((prevState) =>
             prevState.map((post) => (props.id === post._id ? res.data : post))

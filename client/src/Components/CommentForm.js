@@ -9,7 +9,7 @@ function CommentForm(props) {
     e.preventDefault();
     e.target.reset();
 
-    let url = `http://localhost:3000/api/posts/${props.id}/comments/`;
+    let url = `/api/posts/${props.id}/comments/`;
 
     axios
       .post(url, { username, content })

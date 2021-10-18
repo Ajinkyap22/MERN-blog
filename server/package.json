@@ -1,6 +1,9 @@
 {
   "name": "server",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.18.1"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -10,12 +13,14 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "express-validator": "^6.12.1",
+    "helmet": "^4.6.0",
     "mongoose": "^6.0.7",
     "morgan": "~1.9.1",
     "passport": "^0.4.1",

@@ -9,7 +9,7 @@ function Comment(props) {
   const deleteComment = function () {
     axios
       .delete(
-        `http://localhost:3000/api/posts/${props.postId}/comments/${props.comment._id}/delete`,
+        `/api/posts/${props.postId}/comments/${props.comment._id}/delete`,
         {
           headers: {
             Authorization: `Bearer ${
@@ -36,7 +36,7 @@ function Comment(props) {
 
     axios
       .put(
-        `http://localhost:3000/api/posts/${props.postId}/comments/${props.comment._id}/edit`,
+        `/api/posts/${props.postId}/comments/${props.comment._id}/edit`,
         { username: props.user.username, content: newComment },
         {
           headers: {

@@ -16,11 +16,7 @@ function Preview(props) {
     };
 
     axios
-      .post(
-        `http://localhost:3000/api/posts/${props._id}/${urlString}`,
-        {},
-        headers
-      )
+      .post(`/api/posts/${props._id}/${urlString}`, {}, headers)
       .then((res) => {
         // update posts array
         props.setPosts((prevState) =>

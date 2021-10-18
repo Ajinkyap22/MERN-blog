@@ -16,7 +16,7 @@ function Signup(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/api/users/signup", {
+      .post("/api/users/signup", {
         username,
         password,
         confirmPassword,

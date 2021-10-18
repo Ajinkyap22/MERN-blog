@@ -19,7 +19,7 @@ function Post(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/posts/${props._id}/comments`)
+      .get(`/api/posts/${props._id}/comments`)
       .then((res) => {
         setComments(res.data);
       })
@@ -28,7 +28,7 @@ function Post(props) {
 
   const deletePost = function () {
     axios
-      .delete(`http://localhost:3000/api/posts/${props._id}/delete`, {
+      .delete(`/api/posts/${props._id}/delete`, {
         headers: {
           Authorization: `Bearer ${
             JSON.parse(localStorage.getItem("user")).token

@@ -19,7 +19,7 @@ function App() {
   const [toastText, setToastText] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/posts").then((res) => {
+    axios.get("/api/posts").then((res) => {
       setPosts(res.data);
     });
   }, []);
