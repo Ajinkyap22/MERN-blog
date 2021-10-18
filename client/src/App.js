@@ -40,15 +40,22 @@ function App() {
           <Route
             exact
             path="/"
-            render={() => <Home posts={posts} user={user} />}
+            render={() => (
+              <Home posts={posts} user={user} title="Home | Blogify" />
+            )}
           />
 
           <Route
             exact
             path="/login"
-            render={() => <Login setUser={setUser} />}
+            render={() => <Login setUser={setUser} title="Login | Blogify" />}
           />
-          <Route exact path="/signup" component={Signup} />
+          <Route
+            exact
+            path="/signup"
+            component={Signup}
+            title="Signup | Blogify"
+          />
 
           <Route
             exact
@@ -60,6 +67,7 @@ function App() {
                 setPosts={setPosts}
                 setShowToast={setShowToast}
                 setToastText={setToastText}
+                title="Dashboard | Blogify"
               />
             )}
           />

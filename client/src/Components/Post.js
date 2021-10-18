@@ -14,6 +14,10 @@ function Post(props) {
   const [commentEdit, setCommentEdit] = useState(false);
 
   useEffect(() => {
+    document.title = `${props.title} | Blogify` || "Blogify";
+  }, [props.title]);
+
+  useEffect(() => {
     axios
       .get(`http://localhost:3000/api/posts/${props._id}/comments`)
       .then((res) => {

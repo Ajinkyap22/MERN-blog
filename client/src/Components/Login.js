@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import Logo from "../images/logo.png";
@@ -8,6 +8,10 @@ function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    document.title = props.title || "Login | Blogify";
+  }, [props.title]);
 
   const submitHandler = (e) => {
     e.preventDefault();

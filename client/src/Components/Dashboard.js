@@ -19,6 +19,10 @@ function Dashboard(props) {
       : setShowUnpublished(false);
   }, [props.posts, props.user]);
 
+  useEffect(() => {
+    document.title = props.title || "Dashboard | Blogify";
+  }, [props.title]);
+
   return (
     <div className="mt-5">
       <h1 className="pt-5 text-center fw-bold">{`${props.user.username}'s Dashboard`}</h1>

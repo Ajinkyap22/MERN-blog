@@ -9,6 +9,8 @@ function Home(props) {
 
   useEffect(() => {
     setPublished(() => props.posts.filter((post) => post.published));
+
+    document.title = props.title || "Home | Blogify";
   }, [props]);
 
   return (

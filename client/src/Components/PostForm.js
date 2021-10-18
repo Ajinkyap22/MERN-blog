@@ -1,5 +1,5 @@
 import { Editor } from "@tinymce/tinymce-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 
@@ -18,6 +18,12 @@ function PostForm(props) {
       Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
     },
   };
+
+  useEffect(() => {
+    document.title = props.editing
+      ? "Edit Post | Blogify"
+      : "Create Post | Blogify";
+  }, [props.editing]);
 
   const handleSubmit = function (e) {
     e.preventDefault();
