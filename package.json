@@ -1,19 +1,33 @@
 {
-  "name": "blogify",
-  "version": "1.0.0",
-  "description": "��#\u0000 \u0000M\u0000E\u0000R\u0000N\u0000-\u0000b\u0000l\u0000o\u0000g\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "name": "server",
+  "version": "0.0.0",
+  "engines": {
+    "node": "12.18.1"
+  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "SET DEBUG=locallibrary:* & npm run devstart"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ajinkyap22/MERN-blog.git"
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "express-validator": "^6.12.1",
+    "helmet": "^4.6.0",
+    "mongoose": "^6.0.7",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ajinkyap22/MERN-blog/issues"
-  },
-  "homepage": "https://github.com/Ajinkyap22/MERN-blog#readme"
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
