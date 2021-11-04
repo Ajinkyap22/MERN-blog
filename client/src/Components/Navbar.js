@@ -35,8 +35,8 @@ function Navbar(props) {
             <NavLink
               exact
               to="/"
-              activeClassName="active"
-              className="nav-link mx-2"
+              activeClassName="active fw-bold letter-spacing"
+              className="nav-link mx-2 text-white"
               aria-current="page"
               hidden={props.user ? false : true}
             >
@@ -46,8 +46,8 @@ function Navbar(props) {
             <NavLink
               exact
               to="/dashboard"
-              activeClassName="active"
-              className="nav-link mx-2"
+              activeClassName="active fw-bold letter-spacing"
+              className="nav-link text-white"
               aria-current="page"
               hidden={props.user ? false : true}
             >
@@ -57,7 +57,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/login"
-              className="btn btn-light fw-bold rounded-pill m-2"
+              className="btn btn-light fw-bold rounded-pill m-2 "
               hidden={props.user ? true : false}
             >
               Login
@@ -66,7 +66,7 @@ function Navbar(props) {
             <NavLink
               exact
               to="/signup"
-              className="btn btn-light fw-bold rounded-pill m-2"
+              className="btn btn-light fw-bold rounded-pill m-2 "
               hidden={props.user ? true : false}
             >
               Signup

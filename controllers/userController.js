@@ -3,8 +3,9 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
-const Post = require("../models/user");
 const { body, validationResult } = require("express-validator");
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(process.env.CLIENT_ID);
 
 // get all users
 exports.users_get = function (req, res, next) {
@@ -123,4 +124,37 @@ exports.user = async function (req, res) {
 
     res.json(user);
   });
+};
+
+exports.google = async function (req, res) {
+  const { token } = req.body;
+
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: process.env.GOOGLE_CLIENT_ID,
+  });
+
+  const { name } = ticket.getPayload();
+
+  User.findOneAndUpdate(
+    { username: name },
+    { username: name },
+    { upsert: true },
+    function (err, user) {
+      if (err) res.json(err);
+
+      jwt.sign(
+        { _id: user._id, username: user.username },
+        process.env.SECRET,
+        { expiresIn: "10m" },
+        (err, token) => {
+          if (err) return res.status(400).json(err);
+          return res.json({
+            token: token,
+            user: { _id: user._id, username: user.username },
+          });
+        }
+      );
+    }
+  );
 };

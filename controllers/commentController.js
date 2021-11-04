@@ -53,6 +53,7 @@ exports.create_comment = [
 exports.edit_comment = [
   (req, res, next) => {
     jwt.verify(req.token, process.env.SECRET, (err, authData) => {
+      console.log(req.token);
       if (err) return res.status(400).json(err);
       req.authData = authData;
       next();

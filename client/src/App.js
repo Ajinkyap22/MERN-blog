@@ -53,8 +53,9 @@ function App() {
           <Route
             exact
             path="/signup"
-            component={Signup}
-            title="Signup | Blogify"
+            render={() => (
+              <Signup setUser={setUser} title="Sign up | Blogify" />
+            )}
           />
 
           <Route

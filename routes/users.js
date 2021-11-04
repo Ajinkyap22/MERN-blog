@@ -14,4 +14,7 @@ router.post("/signup", userController.signup_post);
 // get single user
 router.get("/:id", userController.user);
 
+// google auth
+router.post("/google", userController.google);
+
 module.exports = router;

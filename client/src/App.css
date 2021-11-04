@@ -10,6 +10,18 @@
   width: 3rem;
 }
 
+.letter-spacing {
+  letter-spacing: 0.5px;
+}
+
+.post-bg {
+  background-color: #f3f3f3;
+}
+
+.content {
+  font-size: 1.2rem !important;
+}
+
 .btn:hover {
   transform: scale(1.05);
   transition: all 0.3s;
@@ -17,6 +29,11 @@
 
 .preview:hover {
   transform: scale(1.02);
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
   transition: all 0.3s;
 }
 

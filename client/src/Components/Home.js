@@ -27,7 +27,7 @@ function Home(props) {
           <Link
             exact="true"
             to="/signup"
-            className="btn btn-dark"
+            className="btn btn-dark fw-bold letter-spacing"
             hidden={props.user ? true : false}
           >
             Get Started{" "}
@@ -53,6 +53,8 @@ function Home(props) {
           alt="Illustration"
         />
       </section>
+
+      <hr />
 
       <h4 className="fw-bold p-3">Posts ({published.length})</h4>
 

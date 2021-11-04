@@ -59,7 +59,7 @@ function Preview(props) {
       </Link>
 
       <button
-        className="btn btn-outline-dark mb-3"
+        className="btn btn-outline-dark mb-3 fw-bold letter-spacing"
         hidden={props.publishing || props.unpublishing ? false : true}
         onClick={handlePublish}
       >

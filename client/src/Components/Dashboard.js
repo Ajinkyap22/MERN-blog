@@ -30,7 +30,7 @@ function Dashboard(props) {
       <section className="p-2">
         <h3>Published Posts</h3>
         <hr />
-        <p className="text-center" hidden={showPublished ? true : false}>
+        <p className="text-center lead" hidden={showPublished ? true : false}>
           You have no published posts.
         </p>
 
@@ -59,7 +59,10 @@ function Dashboard(props) {
       <section className="p-2 pt-3">
         <h3>Unpublished Posts</h3>
         <hr />
-        <p className="text-center p-3" hidden={showUnpublished ? true : false}>
+        <p
+          className="text-center p-3 lead"
+          hidden={showUnpublished ? true : false}
+        >
           You have no unpublished posts.
         </p>
 
