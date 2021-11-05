@@ -94,7 +94,7 @@ function PostForm(props) {
     });
   };
   return (
-    <div className="mt-5 p-3">
+    <div className="mt-5 p-3 w-75 m-auto shadow post-form">
       <h2 className="pt-4 fw-bold">
         {props.editing ? "Edit Blog Post" : "Create Blog Post"}
       </h2>

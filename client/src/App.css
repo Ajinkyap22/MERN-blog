@@ -26,6 +26,15 @@
   width: 10rem;
 }
 
+.like {
+  border: none;
+  background-color: transparent;
+}
+
+.liked {
+  color: #fb3958;
+}
+
 .btn:hover {
   transform: scale(1.05);
   transition: all 0.3s;
@@ -39,6 +48,10 @@
 .nav-link:hover {
   transform: scale(1.1);
   transition: all 0.3s;
+}
+
+.bi-heart:hover {
+  color: #fb3958;
 }
 
 .github:hover {
@@ -58,5 +71,10 @@
   .post {
     box-shadow: none !important;
     width: 100% !important;
+  }
+
+  .post-form {
+    width: 100% !important;
+    box-shadow: none !important;
   }
 }
