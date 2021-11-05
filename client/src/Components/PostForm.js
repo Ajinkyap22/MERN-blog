@@ -158,7 +158,7 @@ function PostForm(props) {
         <div className="py-3">
           <button
             type="submit"
-            className="btn btn-dark mx-2"
+            className="btn btn-dark me-2 fw-bold letter-spacing"
             disabled={
               formData.title && formData.content && formData.author
                 ? false

@@ -59,7 +59,7 @@ function CommentForm(props) {
       </div>
 
       <button
-        className="btn btn-dark"
+        className="btn btn-dark fw-bold letter-spacing"
         disabled={content && username ? false : true}
       >
         Comment

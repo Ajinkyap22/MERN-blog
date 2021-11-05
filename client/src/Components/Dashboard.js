@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Preview from "./Preview";
+import Bulb from "../images/bulb.jpg";
 
 function Dashboard(props) {
   const [showPublished, setShowPublished] = useState(false);
@@ -30,9 +31,11 @@ function Dashboard(props) {
       <section className="p-2">
         <h3>Published Posts</h3>
         <hr />
-        <p className="text-center lead" hidden={showPublished ? true : false}>
-          You have no published posts.
-        </p>
+
+        <section className="text-center" hidden={showPublished ? true : false}>
+          <img src={Bulb} className="bulb" alt="" />
+          <p className="text-center p-3 lead">You have no published posts.</p>
+        </section>
 
         <div
           className="row p-3 pt-1 w-100"
@@ -59,12 +62,13 @@ function Dashboard(props) {
       <section className="p-2 pt-3">
         <h3>Unpublished Posts</h3>
         <hr />
-        <p
-          className="text-center p-3 lead"
+        <section
+          className="text-center"
           hidden={showUnpublished ? true : false}
         >
-          You have no unpublished posts.
-        </p>
+          <img src={Bulb} className="bulb" alt="" />
+          <p className="text-center p-3 lead">You have no unpublished posts.</p>
+        </section>
 
         <div
           className="row p-3 pt-1 w-100"

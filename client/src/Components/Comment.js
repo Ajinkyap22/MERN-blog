@@ -80,7 +80,7 @@ function Comment(props) {
 
         <div>
           <button
-            className="btn btn-dark me-3 fw-bold px-2 py-1 letter-spacing"
+            className="btn fw-bold text-primary p-1 letter-spacing"
             hidden={
               props.user && props.user.username === props.comment.username
                 ? false
@@ -106,7 +106,7 @@ function Comment(props) {
           </button>
 
           <button
-            className="btn btn-danger fw-bold px-2 py-1 letter-spacing"
+            className="btn fw-bold text-danger px-2 py-1 letter-spacing"
             onClick={deleteComment}
             hidden={
               props.user && props.user.username === props.comment.username
@@ -145,7 +145,7 @@ function Comment(props) {
             ></textarea>
           </div>
 
-          <button className="btn btn-dark">Save</button>
+          <button className="btn btn-dark fw-bold letter-spacing">Save</button>
         </form>
       </div>
     </div>

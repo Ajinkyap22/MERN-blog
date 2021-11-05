@@ -22,6 +22,10 @@
   font-size: 1.2rem !important;
 }
 
+.bulb {
+  width: 10rem;
+}
+
 .btn:hover {
   transform: scale(1.05);
   transition: all 0.3s;

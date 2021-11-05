@@ -27,10 +27,10 @@ function Home(props) {
           <Link
             exact="true"
             to="/signup"
-            className="btn btn-dark fw-bold letter-spacing"
+            className="btn btn-dark"
             hidden={props.user ? true : false}
           >
-            Get Started{" "}
+            <span className="lead fw-bold letter-spacing">Get Started </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
