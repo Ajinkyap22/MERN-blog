@@ -13,11 +13,24 @@ function Post(props) {
   const [editing, setEditing] = useState(false);
   const [commentEdit, setCommentEdit] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState([]);
 
+  // for page title
   useEffect(() => {
     document.title = `${props.title} | Blogify` || "Blogify";
   }, [props.title]);
 
+  // to check if user has liked post
+  useEffect(() => {
+    if (props.likes.some((id) => id === props.user?.id)) setLiked(true);
+  }, [props.likes, props.user]);
+
+  // for post likes
+  useEffect(() => {
+    setLikes(props.likes);
+  }, [props.likes]);
+
+  // get comments
   useEffect(() => {
     axios
       .get(`/api/posts/${props._id}/comments`)
@@ -56,7 +69,47 @@ function Post(props) {
   };
 
   const handleLike = function () {
-    setLiked(!liked);
+    if (liked) {
+      axios
+        .put(
+          `/api/posts/${props._id}/dislike`,
+          { user_id: props.user._id },
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("user")).token
+              }`,
+            },
+          }
+        )
+        .then((res) => {
+          setLikes(res.data);
+          setLiked(false);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      axios
+        .put(
+          `/api/posts/${props._id}/like`,
+          { user_id: props.user._id },
+          {
+            headers: {
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("user")).token
+              }`,
+            },
+          }
+        )
+        .then((res) => {
+          setLikes(res.data);
+          setLiked(true);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   return (
@@ -127,18 +180,22 @@ function Post(props) {
 
         <section className="py-3 content">
           {ReactHtmlParser(props.content)}
-          <button className="like" onClick={handleLike}>
+          <button
+            className="like"
+            onClick={handleLike}
+            hidden={props.user ? false : true}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
               height="14"
               fill="currentColor"
               className={liked ? "bi bi-heart liked" : "bi bi-heart"}
-              viewBox="0 0 16 16"
+              viewBox="0 0 16 14"
             >
               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
             </svg>
-            <span className="px-1">{props.likes}</span>
+            <span className="px-2">{likes.length}</span>
           </button>
         </section>
 

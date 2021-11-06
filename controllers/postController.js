@@ -176,3 +176,31 @@ exports.post_get = function (req, res) {
       return res.json(post);
     });
 };
+
+// like post
+exports.like = function (req, res) {
+  Post.findByIdAndUpdate(
+    req.params.id,
+    { $push: { likes: req.body.user_id } },
+    { new: true },
+    function (err, post) {
+      if (err) return res.json(err);
+
+      return res.json(post.likes);
+    }
+  );
+};
+
+// dislike post
+exports.dislike = function (req, res) {
+  Post.findByIdAndUpdate(
+    req.params.id,
+    { $pull: { likes: req.body.user_id } },
+    { new: true },
+    function (err, post) {
+      if (err) return res.json(err);
+
+      return res.json(post.likes);
+    }
+  );
+};
