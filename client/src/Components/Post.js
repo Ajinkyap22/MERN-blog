@@ -20,15 +20,14 @@ function Post(props) {
     document.title = `${props.title} | Blogify` || "Blogify";
   }, [props.title]);
 
-  // to check if user has liked post
-  useEffect(() => {
-    if (props.likes.some((id) => id === props.user?.id)) setLiked(true);
-  }, [props.likes, props.user]);
-
   // for post likes
   useEffect(() => {
-    setLikes(props.likes);
-  }, [props.likes]);
+    axios.get(`/api/posts/${props._id}/likes`).then((res) => {
+      setLikes(res.data);
+
+      if (res.data.some((id) => id === props.user?._id)) setLiked(true);
+    });
+  }, [props.likes, props._id, props.user]);
 
   // get comments
   useEffect(() => {

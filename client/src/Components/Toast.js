@@ -6,27 +6,28 @@ function Toast(props) {
   };
 
   return (
-    <div className="position-fixed bottom-0 strat-0 m-4 bg-dark shadow rounded">
+    <div
+      className="position-fixed bottom-0 start-0 p-2 m-4 bg-dark shadow rounded"
+      hidden={props.showToast ? false : true}
+    >
       <div
-        className="notification align-items-center"
+        className="notification d-flex"
         role="alert"
         aria-live="assertive"
         aria-atomic="true"
-        hidden={props.showToast ? false : true}
       >
         <div className="d-flex flex-column">
-          <div className="toast-header py-1 px-0 border-bottom">
-            <img src={Logo} className="logo p-1" alt="..." />
-            <strong className="px-2 text-dark">Blogify</strong>
-            <button
-              type="button"
-              className="btn-close btn-close-dark me-2 m-auto"
-              aria-label="Close"
-              onClick={hideToast}
-            ></button>
+          <div className="text-center p-2 text-white letter-spacing">
+            <img src={Logo} alt="" className="logo pe-2" />
+            {props.toastText}
           </div>
-          <div className="text-center text-white p-2">{props.toastText}</div>
         </div>
+        <button
+          type="button"
+          className="btn-close btn-close-white me-2 m-auto"
+          aria-label="Close"
+          onClick={hideToast}
+        ></button>
       </div>
     </div>
   );
