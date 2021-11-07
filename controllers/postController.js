@@ -204,3 +204,12 @@ exports.dislike = function (req, res) {
     }
   );
 };
+
+// get post likes
+exports.likes = function (req, res) {
+  Post.findById(req.params.id, function (err, post) {
+    if (err) return res.json(err);
+
+    return res.json(post.likes);
+  });
+};

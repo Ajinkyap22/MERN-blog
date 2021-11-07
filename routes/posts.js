@@ -24,6 +24,9 @@ router.delete("/:id/delete", verifyToken, postController.delete_post);
 // GET single post
 router.get("/:id", postController.post_get);
 
+// get post likes
+router.get("/:id/likes", postController.likes);
+
 // like post
 router.put("/:id/like", verifyToken, postController.like);
 

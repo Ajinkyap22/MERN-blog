@@ -9,7 +9,7 @@ const PostSchema = new Schema({
   published: { type: Boolean },
   timestamp: { type: Date },
   imgUrl: { type: String },
-  likes: { tpye: Array, default: [] },
+  likes: { type: Array, default: [] },
 });
 
 module.exports = mongoose.model("Post", PostSchema);
