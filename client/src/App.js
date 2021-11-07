@@ -11,16 +11,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Toast from "./Components/Toast";
 import Footer from "./Components/Footer";
+import Loader from "./Components/Loader";
 
 function App() {
   const [user, setUser] = useState(undefined);
   const [posts, setPosts] = useState([]);
   const [showToast, setShowToast] = useState(false);
   const [toastText, setToastText] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("/api/posts").then((res) => {
       setPosts(res.data);
+      setLoading(false);
     });
   }, []);
 
@@ -32,69 +35,55 @@ function App() {
 
   return (
     <div className="App h-100">
-      <Router>
-        <header>
-          <Navbar user={user} setUser={setUser} />
-        </header>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <Home posts={posts} user={user} title="Home | Blogify" />
-            )}
-          />
+      <Loader loading={loading} />
 
-          <Route
-            exact
-            path="/login"
-            render={() => <Login setUser={setUser} title="Login | Blogify" />}
-          />
-          <Route
-            exact
-            path="/signup"
-            render={() => (
-              <Signup setUser={setUser} title="Sign up | Blogify" />
-            )}
-          />
-
-          <Route
-            exact
-            path="/dashboard"
-            render={() => (
-              <Dashboard
-                user={user}
-                posts={posts}
-                setPosts={setPosts}
-                setShowToast={setShowToast}
-                setToastText={setToastText}
-                title="Dashboard | Blogify"
-              />
-            )}
-          />
-
-          <Route
-            exact
-            path="/create"
-            render={() => (
-              <PostForm
-                user={user}
-                posts={posts}
-                setPosts={setPosts}
-                setShowToast={setShowToast}
-                setToastText={setToastText}
-              />
-            )}
-          />
-
-          {posts.map((post) => (
+      <div hidden={loading ? true : false}>
+        <Router>
+          <header>
+            <Navbar user={user} setUser={setUser} />
+          </header>
+          <Switch>
             <Route
-              key={post._id}
               exact
-              path={`/posts/${post._id}`}
+              path="/"
               render={() => (
-                <Post
-                  {...post}
+                <Home posts={posts} user={user} title="Home | Blogify" />
+              )}
+            />
+
+            <Route
+              exact
+              path="/login"
+              render={() => <Login setUser={setUser} title="Login | Blogify" />}
+            />
+            <Route
+              exact
+              path="/signup"
+              render={() => (
+                <Signup setUser={setUser} title="Sign up | Blogify" />
+              )}
+            />
+
+            <Route
+              exact
+              path="/dashboard"
+              render={() => (
+                <Dashboard
+                  user={user}
+                  posts={posts}
+                  setPosts={setPosts}
+                  setShowToast={setShowToast}
+                  setToastText={setToastText}
+                  title="Dashboard | Blogify"
+                />
+              )}
+            />
+
+            <Route
+              exact
+              path="/create"
+              render={() => (
+                <PostForm
                   user={user}
                   posts={posts}
                   setPosts={setPosts}
@@ -102,10 +91,28 @@ function App() {
                   setToastText={setToastText}
                 />
               )}
-            ></Route>
-          ))}
-        </Switch>
-      </Router>
+            />
+
+            {posts.map((post) => (
+              <Route
+                key={post._id}
+                exact
+                path={`/posts/${post._id}`}
+                render={() => (
+                  <Post
+                    {...post}
+                    user={user}
+                    posts={posts}
+                    setPosts={setPosts}
+                    setShowToast={setShowToast}
+                    setToastText={setToastText}
+                  />
+                )}
+              ></Route>
+            ))}
+          </Switch>
+        </Router>
+      </div>
 
       <Toast
         showToast={showToast}

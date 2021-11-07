@@ -35,6 +35,14 @@
   color: #fb3958;
 }
 
+.spinner-border {
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  top: 45%;
+  left: 47%;
+}
+
 .btn:hover {
   transform: scale(1.05);
   transition: all 0.3s;
@@ -76,5 +84,11 @@
   .post-form {
     width: 100% !important;
     box-shadow: none !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .spinner-border {
+    left: 40%;
   }
 }
