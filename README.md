@@ -37,9 +37,11 @@
 
 ## Features
 
-- Create, edit and delete blogs
-- Publish/Unpublish blogs
-- Comment on blogs
+- Create, edit and delete blog posts
+- Publish/Unpublish blog posts
+- Comment on blog posts
+- Like blog posts
+- Fully responsive User Interface
 
 ## Status
 
