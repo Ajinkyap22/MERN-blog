@@ -17,13 +17,12 @@
 
 ## Technologies
 
-- HTML5
 - CSS3
 - React.js
 - Express
 - Node.js
 - Bootstrap
-- Mongoose (MongoDB)
+- MongoDB
 
 ## Setup
 
