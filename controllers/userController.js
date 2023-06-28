@@ -131,7 +131,7 @@ exports.google = async function (req, res) {
 
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: process.env.GOOGLE_CLIENT_ID,
+    requiredAudience: process.env.GOOGLE_CLIENT_ID,
   });
 
   const { name } = ticket.getPayload();
