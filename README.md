@@ -13,7 +13,7 @@
 
 ## Live Demo
 
-[Blogify](https://blogify-mern.herokuapp.com/)
+[Blogify](https://blogify-mern.cyclic.app)
 
 ## Technologies
 
@@ -26,13 +26,12 @@
 
 ## Setup
 
-* You will need to install Node.js
-* Go to the project directory in the terminal & install the required dependencies by using: npm install
-* Type the command : npm run devstart
-* Go to the client subdirectory: cd/client
-* Build the distribution files using: npm run build
-* Tpye the command : npm start
-
+- You will need to install Node.js
+- Go to the project directory in the terminal & install the required dependencies by using: npm install
+- Type the command : npm run devstart
+- Go to the client subdirectory: cd/client
+- Build the distribution files using: npm run build
+- Tpye the command : npm start
 
 ## Features
 
