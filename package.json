@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "devstart": "nodemon ./bin/www --ignore client",
     "serverstart": "SET DEBUG=locallibrary:* & npm run devstart"
   },
