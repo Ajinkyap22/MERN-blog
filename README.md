@@ -5,6 +5,7 @@
 ## Table of contents
 
 - [Live Demo](#live-demo)
+- [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
@@ -14,6 +15,32 @@
 ## Live Demo
 
 [Blogify](https://blogify-mern.cyclic.app)
+
+## Screenshots
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20thumbnails/Blogify.jpg?raw=true" width="600" alt="Home Screen"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Blogify/1.png?raw=true" width="600" alt="Blog Feed"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Blogify/2.png?raw=true" width="600" alt="Blog Page"  />
+</kbd>
+
+<hr/>
+
+<kbd>
+  <img src="https://github.com/Ajinkyap22/portfolio/blob/develop/src/images/Project%20screenshots/Blogify/3.png?raw=true" width="600" alt="User Dashboard"  />
+</kbd>
+
+<hr/>
 
 ## Technologies
 
